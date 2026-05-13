@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nick Neo | Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(180deg, #01081f 0%, #031033 100%);
+            color: #f1f5f9;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(2, 8, 28, 0.92);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 18px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            background: linear-gradient(90deg, #4f7cff, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: #cbd5e1;
+            font-size: 15px;
+        }
+
+        .nav-links a:hover {
+            color: #60a5fa;
+        }
+
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 90px 24px;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .pill {
+            display: inline-block;
+            padding: 10px 18px;
+            border-radius: 999px;
+            background: rgba(30, 41, 59, 0.85);
+            border: 1px solid rgba(96, 165, 250, 0.15);
+            color: #60a5fa;
+            font-size: 14px;
+            margin-bottom: 28px;
+        }
+
+        .pill::before {
+            content: "●";
+            color: #22c55e;
+            margin-right: 8px;
+        }
+
+        .hero h1,
+        .section-title {
+            font-size: 64px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #4f7cff, #8b5cf6, #38bdf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 22px;
+            color: #cbd5e1;
+            max-width: 680px;
+            margin-bottom: 30px;
+        }
+
+        .highlight-blue {
+            color: #38bdf8;
+        }
+
+        .highlight-purple {
+            color: #a78bfa;
+        }
+
+        .stats {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+
+        .stat-card {
+            min-width: 150px;
+            background: rgba(30, 41, 59, 0.92);
+            border-radius: 18px;
+            padding: 22px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .stat-card h3 {
+            font-size: 34px;
+            margin-bottom: 8px;
+        }
+
+        .stat-card p {
+            font-size: 14px;
+            color: #94a3b8;
+            margin: 0;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 15px 28px;
+            border-radius: 14px;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, #2563eb, #3b82f6);
+            color: white;
+            box-shadow: 0 0 18px rgba(59, 130, 246, 0.35);
+        }
+
+        .btn-secondary {
+            border: 1px solid rgba(148, 163, 184, 0.25);
+            color: white;
+            background: transparent;
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+        }
+
+        .profile-ring {
+            width: 360px;
+            height: 360px;
+            border-radius: 50%;
+            padding: 8px;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6, #22d3ee);
+            box-shadow: 0 0 35px rgba(59, 130, 246, 0.22);
+        }
+
+        .profile-pic {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            background: #dbeafe;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-heading h2 {
+            font-size: 58px;
+            font-weight: 800;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .about-text p {
+            font-size: 18px;
+            color: #dbe4f0;
+            margin-bottom: 26px;
+        }
+
+        .glass-card {
+            background: rgba(30, 41, 59, 0.95);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 24px;
+            padding: 32px;
+            box-shadow: 0 0 35px rgba(79, 124, 255, 0.08);
+        }
+
+        .glass-card h3 {
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        .expertise-list {
+            list-style: none;
+        }
+
+        .expertise-list li {
+            margin-bottom: 16px;
+            color: #dbe4f0;
+            font-size: 17px;
+        }
+
+        .expertise-list li::before {
+            content: "•";
+            margin-right: 12px;
+            font-size: 24px;
+            vertical-align: middle;
+        }
+
+        .dot-blue::before { color: #60a5fa; }
+        .dot-purple::before { color: #a78bfa; }
+        .dot-cyan::before { color: #22d3ee; }
+        .dot-orange::before { color: #fb923c; }
+        .dot-green::before { color: #4ade80; }
+        .dot-pink::before { color: #f87171; }
+
+        .about-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 38px;
+        }
+
+        .mini-card {
+            background: rgba(30, 41, 59, 0.95);
+            border-radius: 22px;
+            padding: 28px 24px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .mini-card h4 {
+            font-size: 28px;
+            margin-bottom: 14px;
+            color: #60a5fa;
+        }
+
+        .mini-card h5 {
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+
+        .mini-card p {
+            color: #94a3b8;
+            font-size: 15px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .skill-card {
+            background: rgba(30, 41, 59, 0.95);
+            border-radius: 22px;
+            padding: 34px 24px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .skill-icon {
+            width: 66px;
+            height: 66px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 22px;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .bg-blue { background: rgba(37, 99, 235, 0.22); color: #60a5fa; }
+        .bg-purple { background: rgba(139, 92, 246, 0.22); color: #a78bfa; }
+        .bg-cyan { background: rgba(34, 211, 238, 0.22); color: #22d3ee; }
+        .bg-orange { background: rgba(251, 146, 60, 0.22); color: #fb923c; }
+        .bg-green { background: rgba(74, 222, 128, 0.22); color: #4ade80; }
+        .bg-pink { background: rgba(248, 113, 113, 0.22); color: #f87171; }
+
+        .skill-card h3 {
+            font-size: 18px;
+            line-height: 1.4;
+        }
+
+        .journey-wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 40px 1fr;
+            gap: 26px;
+            align-items: start;
+        }
+
+        .timeline-line {
+            position: relative;
+            width: 40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .timeline-line::before {
+            content: "";
+            position: absolute;
+            top: 18px;
+            bottom: 0;
+            width: 2px;
+            background: rgba(96, 165, 250, 0.5);
+        }
+
+        .timeline-dot {
+            width: 16px;
+            height: 16px;
+            background: #3b82f6;
+            border-radius: 50%;
+            margin-top: 6px;
+            z-index: 1;
+            box-shadow: 0 0 12px rgba(59,130,246,0.5);
+        }
+
+        .journey-card {
+            background: rgba(30, 41, 59, 0.95);
+            border-radius: 24px;
+            padding: 32px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .journey-top {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 18px;
+        }
+
+        .badge {
+            background: rgba(37, 99, 235, 0.16);
+            color: #60a5fa;
+            padding: 8px 14px;
+            border-radius: 999px;
+            font-size: 14px;
+        }
+
+        .journey-date {
+            color: #94a3b8;
+            font-size: 15px;
+        }
+
+        .journey-card h3 {
+            font-size: 22px;
+            margin-bottom: 6px;
+        }
+
+        .company {
+            color: #60a5fa;
+            font-size: 18px;
+            margin-bottom: 18px;
+        }
+
+        .journey-card p {
+            color: #cbd5e1;
+            font-size: 18px;
+            margin-bottom: 18px;
+        }
+
+        .tag-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(15, 23, 42, 0.9);
+            color: #dbe4f0;
+            padding: 8px 14px;
+            border-radius: 12px;
+            font-size: 14px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .contact-card {
+            background: rgba(30, 41, 59, 0.95);
+            border-radius: 24px;
+            padding: 36px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .contact-card h3 {
+            font-size: 24px;
+            margin-bottom: 18px;
+        }
+
+        .contact-card p {
+            color: #cbd5e1;
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 28px 20px;
+            background: rgba(2, 8, 28, 0.92);
+            color: #cbd5e1;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 1000px) {
+            .hero,
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-cards,
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                min-height: auto;
+                padding-top: 40px;
+            }
+
+            .hero h1,
+            .section-title,
+            .section-heading h2 {
+                font-size: 44px;
+            }
+
+            .profile-ring {
+                width: 260px;
+                height: 260px;
+            }
+
+            .nav-inner {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .nav-links {
+                justify-content: center;
+            }
+        }
+        
+        .mini-card:hover,
+.skill-card:hover,
+.contact-card:hover,
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 22px rgba(56, 189, 248, 0.12);
+    transition: 0.25s ease;
+}
+.btn-primary {
+    background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+    color: white;
+    box-shadow: var(--glow-blue);
+    border: none;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 24px rgba(56, 189, 248, 0.35);
+}
+
+.btn-secondary {
+    border: 1px solid rgba(56, 189, 248, 0.22);
+    color: var(--text-main);
+    background: rgba(8, 20, 38, 0.45);
+    backdrop-filter: blur(8px);
+}
+
+.btn-secondary:hover {
+    color: var(--neon-cyan);
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 16px rgba(34, 211, 238, 0.16);
+}
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-inner">
+            <div class="logo">Nick Neo</div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#journey">Professional Journey</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="section hero">
+        <div>
+            <div class="pill">Available for Opportunities</div>
+
+            <h1><span class="gradient-text">Nick Neo</span></h1>
+            <p class="subtag">Engineering mindset • Problem solver • Critical Thinker </p>
+
+            <p>
+                I help teams build stronger
+                <span class="highlight-blue">cloud foundations</span>,
+                improve <span class="highlight-purple">DevOps delivery</span>,
+                and grow through <span class="highlight-blue">automation</span>
+                and practical engineering skills.
+            </p>
+
+            <div class="stats">
+                <div class="stat-card">
+                    <h3>4+</h3>
+                    <p>Key Technical Skills</p>
+                </div>
+                <div class="stat-card">
+                    <h3>10+</h3>
+                    <p>Hands-on Projects</p>
+                </div>
+                <div class="stat-card">
+                    <h3>24/7</h3>
+                    <p>Problem-Solving Mindset</p>
+                </div>
+            </div>
+
+            <div class="hero-buttons">
+                <a href="#skills" class="btn btn-primary">View Expertise</a>
+                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+            </div>
+        </div>
+
+        <div class="hero-image">
+            <div class="profile-ring">
+                <img src="{{ url_for('static', filename='IMG_8749.PNG') }}" alt="Nick Neo" class="profile-pic">
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="section-heading">
+            <h2>About <span class="gradient-text">Me</span></h2>
+        </div>
+
+        <div class="about-grid">
+            <div class="about-text">
+                <p>
+                    I graduated from <span class="highlight-blue">Singapore Institute of Technology</span>
+                    with a background in engineering, where I developed a strong interest in problem-solving,
+                    troubleshooting, and understanding how complex systems work.
+                </p>
+
+                <p>
+                    Today, I am growing my skills in <span class="highlight-purple">Cloud and DevOps</span>
+                    through hands-on learning in Linux, scripting, infrastructure, and CI/CD.
+                    I enjoy building things step by step, learning from mistakes, and improving along the way.
+                </p>
+
+                <p>
+                    What makes me different is my engineering mindset. I am naturally curious, persistent,
+                    and practical. When something breaks, I want to understand why. When something works,
+                    I want to improve it.
+                </p>
+            </div>
+
+            <div class="glass-card">
+                <h3>What I Bring</h3>
+                <ul class="expertise-list">
+                    <li class="dot-blue">Hands-on technical troubleshooting</li>
+                    <li class="dot-purple">Engineering discipline and structure</li>
+                    <li class="dot-cyan">Foundational cloud and Linux skills</li>
+                    <li class="dot-orange">Python and automation interest</li>
+                    <li class="dot-green">Persistence in solving problems</li>
+                    <li class="dot-pink">Strong willingness to learn</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="about-cards">
+            <div class="mini-card">
+            <h4>⚙</h4>
+            <h5>Hands-On Mindset</h5>
+            <p>I learn best by building, testing, breaking, and fixing things in real practice.</p>
+            </div>
+
+            <div class="mini-card">
+            <h4>🔍</h4>
+            <h5>Troubleshooting Focus</h5>
+            <p>I enjoy digging into problems, finding root causes, and working through solutions step by step.</p>
+            </div>
+
+            <div class="mini-card">
+            <h4>📈</h4>
+            <h5>Always Improving</h5>
+            <p>I am continuously building my skills in cloud, DevOps, and automation to grow into a stronger engineer.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section">
+        <div class="section-heading">
+            <h2>Skills I’m <span class="gradient-text">Building</span></h2>
+        </div>
+
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-icon bg-blue">LX</div>
+                <h3>Linux Basics</h3>
+            </div>
+
+        <div class="skill-card">
+            <div class="skill-icon bg-purple">CI</div>
+                <h3>CI/CD Concepts</h3>
+            </div>
+
+        <div class="skill-card">
+            <div class="skill-icon bg-orange">AWS</div>
+                <h3>AWS Foundations</h3>
+        </div>
+
+        <div class="skill-card">
+            <div class="skill-icon bg-pink">PY</div>
+                <h3>Python Scripting</h3>
+        </div>
+
+        <div class="skill-card">
+            <div class="skill-icon bg-cyan">DB</div>
+                <h3>Flask & Databases</h3>
+        </div>
+
+        <div class="skill-card">
+            <div class="skill-icon bg-green">OPS</div>
+                <h3>System Troubleshooting</h3>
+        </div>
+    </div>
+    </section>
+
+    <section id="journey" class="section">
+        <div class="section-heading">
+            <h2>Professional <span class="gradient-text">Journey</span></h2>
+        </div>
+
+        <div class="journey-wrap">
+            <div class="timeline-item">
+                <div class="timeline-line">
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="journey-card">
+                    <div class="journey-top">
+                        <span class="badge">Current</span>
+                        <span class="journey-date">2025 – Present</span>
+                    </div>
+
+                    <h3>Cloud & DevOps Learning Journey</h3>
+                    <div class="company">Personal Portfolio & Technical Development</div>
+
+                    <p>
+                        Building practical experience through hands-on labs, coding exercises, and portfolio projects focused on cloud services, automation, Linux administration, and DevOps workflows.
+                    </p>
+
+                    <div class="tag-row">
+                        <span class="tag">Cloud Learning</span>
+                        <span class="tag">Automation</span>
+                        <span class="tag">Linux</span>
+                        <span class="tag">Projects</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="section-heading">
+            <h2>Let's <span class="gradient-text">Connect</span></h2>
+        </div>
+
+        <div class="contact-grid">
+            <div class="contact-card">
+                <h3>Let’s Connect</h3>
+                <p>Email: encheng_97@hotmail.com</p>
+                <p>LinkedIn: https://www.linkedin.com/in/en-cheng-neo-a9806a132/</p>
+                <p>GitHub: https://github.com/Nick-Neo</p>
+            </div>
+
+            <div class="contact-card">
+                <h3>What I’m Looking For</h3>
+                <p>Cloud Support roles</p>
+                <p>Junior DevOps opportunities</p>
+                <p>Technical operations roles</p>
+                <p>Project-based work to keep learning and building</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        © 2026 Nick Neo | Portfolio
+    </footer>
+
+</body>
+</html>

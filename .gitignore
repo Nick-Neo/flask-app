@@ -1,0 +1,8 @@
+venv/
+__pycache__/
+*.pyc
+instance/
+comments.db
+*.db
+secret.yaml
+**/create_user.py
