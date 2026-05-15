@@ -7,7 +7,7 @@ on:
 
 jobs:
   docker:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
       - name: Checkout code
@@ -27,3 +27,9 @@ jobs:
           tags: |
             nickneo23/flaskapp:latest
             nickneo23/flaskapp:v${{ github.run_number }}
+
+      - name: Deploy to Kubernetes
+        run: |
+          kubectl apply -f deployment.yaml
+          kubectl apply -f service.yaml
+          kubectl rollout restart deployment flaskapp-deployment
