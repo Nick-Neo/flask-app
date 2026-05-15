@@ -17,5 +17,6 @@ spec:
       containers:
         - name: flaskapp
           image: nickneo23/flaskapp:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 5000
