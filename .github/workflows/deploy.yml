@@ -36,3 +36,8 @@ jobs:
           kubectl apply -f deployment.yaml
           kubectl apply -f service.yaml
           kubectl rollout restart deployment flaskapp-deployment
+
+      - name: Create Git Tag
+        run: |
+          git tag v${{ github.run_number }}
+          git push origin v${{ github.run_number }}
