@@ -16,6 +16,6 @@ spec:
         - name: dockerhub-secret
       containers:
         - name: flaskapp
-          image: nickneo23/flaskapp:v1.1
+          image: nickneo23/flaskapp:latest
           ports:
             - containerPort: 5000
