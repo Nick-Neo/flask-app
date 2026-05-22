@@ -4,6 +4,7 @@ from flask_login import login_user, LoginManager, UserMixin, login_required, log
 from werkzeug.security import check_password_hash
 from datetime import datetime
 from zoneinfo import ZoneInfo
+import os
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
