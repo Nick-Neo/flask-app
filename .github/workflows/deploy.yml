@@ -10,7 +10,7 @@ jobs:
     runs-on: self-hosted
 
     env:
-  SECRET_KEY: ${{ secrets.SECRET_KEY }}
+      SECRET_KEY: ${{ secrets.SECRET_KEY }}
 
     steps:
       - name: Checkout code
