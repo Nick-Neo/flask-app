@@ -9,6 +9,9 @@ jobs:
   docker:
     runs-on: self-hosted
 
+    env:
+  SECRET_KEY: ${{ secrets.SECRET_KEY }}
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4

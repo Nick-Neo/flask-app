@@ -12,7 +12,7 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db = SQLAlchemy(app)
 
-app.secret_key = "something i know only"
+app.secret_key = os.environ.get("SECRET_KEY")
 login_manager = LoginManager()
 login_manager.init_app(app)
 
