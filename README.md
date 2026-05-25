@@ -214,6 +214,15 @@ nickneo23/flaskapp:latest
 
 For production environments, avoid using the `latest` tag.
 
+### Problems with `latest`
+
+- Unpredictable deployments
+- Difficult troubleshooting
+- Rollback becomes harder
+- Different environments may run different versions
+- Kubernetes may pull unexpected image versions
+- CI/CD pipelines become less reliable
+
 Recommended:
 
 ```text
