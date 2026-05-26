@@ -48,7 +48,7 @@ class User(UserMixin, db.Model):
 def load_user(user_id):
     return User.query.filter_by(username=user_id).first()
 
-@app.route("/scratchpad/", methods=["GET", "POST"])
+@app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "GET":
         return render_template("main_page.html", comments=Comment.query.all())
@@ -80,7 +80,7 @@ def logout():
     logout_user()
     return redirect(url_for('index'))
 
-@app.route("/")
+@app.route("/portfolio")
 def portfolio():
     return render_template("projects.html")
 
