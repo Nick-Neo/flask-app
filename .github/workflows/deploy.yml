@@ -46,9 +46,10 @@ jobs:
       - name: Deploy to AKS
         run: |
           kubectl set image deployment/portfolio \
-            portfolio=$ACR_NAME.azurecr.io/$IMAGE_NAME:$IMAGE_TAG
+            portfolio=$ACR_NAME.azurecr.io/$IMAGE_NAME:$IMAGE_TAG \
+            -n portfolio
 
-          kubectl rollout status deployment/portfolio
+          kubectl rollout status deployment/portfolio -n portfolio
 
       - name: Create Git Tag
         run: |
