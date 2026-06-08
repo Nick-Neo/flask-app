@@ -1,22 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: flaskapp-deployment
+  name: portfolio
+  namespace: portfolio
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
-      app: flaskapp
+      app: portfolio
   template:
     metadata:
       labels:
-        app: flaskapp
+        app: portfolio
     spec:
-      imagePullSecrets:
-        - name: dockerhub-secret
       containers:
-        - name: flaskapp
-          image: nickneo23/flaskapp:latest
-          imagePullPolicy: Always
-          ports:
-            - containerPort: 5000
+      - name: portfolio
+        image: myportfolioacr.azurecr.io/portfolio:v1
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8000
